@@ -17,7 +17,7 @@ def main(page: ft.Page):
         SalvarDadosLocais('valortexto',valor)
     
     ti = LerDadosLocais('valortexto', default='02')
-    page.add(ft.TextField(value = ti, on_change=Settext))
+    page.add(ft.TextField(value = ti, on_change=Settext,label='Digite aqui', border_width=1))
 
 
 if __name__ == '__main__':  
