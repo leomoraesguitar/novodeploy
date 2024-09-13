@@ -95,12 +95,12 @@ def main(page: ft.Page):
         nomerepositorio = 'novodeploy',
         caminhoarquivo = 'meu.json'
     )
-    # file_content, sha = Api.get_file_content()
+    file_content, sha = Api.get_file_content()
 
 
-    # if file_content and sha:
-    #     json_data = Api.Ler_json2(file_content)
-    # new_key_field.value = json_data[list(json_data.keys())[0]]
+    if file_content and sha:
+        json_data = Api.Ler_json2(file_content)
+    new_key_field.value = json_data[list(json_data.keys())[0]]
 
 
 
