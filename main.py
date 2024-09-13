@@ -89,16 +89,21 @@ def main(page: ft.Page):
     json_display = ft.Text("Conteúdo atual do arquivo JSON:")
     result_label = ft.Text(value="", color="green")
 
+
     Api = API_Github(
         nomeusuario = 'leomoraesguitar',
         nomerepositorio = 'novodeploy',
         caminhoarquivo = 'meu.json'
     )
-    file_content, sha = Api.get_file_content()
+    # file_content, sha = Api.get_file_content()
 
-    if file_content and sha:
-        json_data = Api.Ler_json2(file_content)
-    new_key_field.value = json_data[list(json_data.keys())[0]]
+
+    # if file_content and sha:
+    #     json_data = Api.Ler_json2(file_content)
+    # new_key_field.value = json_data[list(json_data.keys())[0]]
+
+
+
     # Função chamada ao clicar no botão de atualização
     def submit_content(e):
         # Obtenção do conteúdo atual e SHA do arquivo
@@ -124,7 +129,9 @@ def main(page: ft.Page):
         page.update()
 
     # Botão para enviar o novo conteúdo
-    submit_button = ft.ElevatedButton(text="Atualizar arquivo JSON", on_click=submit_content)
+    submit_button = ft.ElevatedButton(text="Atualizar arquivo JSON", 
+                                    #   on_click=submit_content
+                                      )
 
     # Adicionando os componentes à página
     page.add(
