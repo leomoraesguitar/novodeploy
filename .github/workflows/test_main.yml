@@ -14,10 +14,10 @@ jobs:
       - name: Test and Update GitHub File
         run: |
           python -c "
-          import os
           import requests
           import base64
           import json
+          
           
           class API_Github:
               def __init__(self):
@@ -69,8 +69,7 @@ jobs:
                   print('Failed to get file content')
           
           if __name__ == "__main__":
-              main()
-
+              main()          
           "
         env:
           PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
