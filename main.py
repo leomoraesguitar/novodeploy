@@ -130,7 +130,7 @@ def main(page: ft.Page):
 
     # Botão para enviar o novo conteúdo
     submit_button = ft.ElevatedButton(text="Atualizar arquivo JSON", 
-                                    #   on_click=submit_content
+                                      on_click=submit_content
                                       )
 
     # Adicionando os componentes à página
