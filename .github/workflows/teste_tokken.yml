@@ -7,28 +7,23 @@ jobs:
   test_permissions:
     runs-on: ubuntu-latest
 
-    permissions:
-      contents: write  # Permissões para leitura e escrita dos conteúdos do repositório
-      actions: read
-      id-token: write  # Se necessário
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Test GitHub Token
+      - name: Test Personal Access Token
         run: |
           python -c "
           import os
           import requests
 
-          token = os.getenv('GITHUB_TOKEN')
+          token = os.getenv('pat')
           if not token:
-              print('GITHUB_TOKEN não configurado.')
+              print('PERSONAL_ACCESS_TOKEN não configurado.')
           else:
               response = requests.get('https://api.github.com/user', headers={'Authorization': f'token {token}'})
               print('Status Code:', response.status_code)
               print('Response:', response.json())
           "
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
