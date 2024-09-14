@@ -1,16 +1,16 @@
-name: Test GitHub Token
+name: Deploy Workflow
 
 on:
-  workflow_dispatch:
+  workflow_dispatch:  # Permite execução manual
 
 jobs:
-  test_token:
+  test_permissions:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: read  # Permissões necessárias
+      contents: write  # Permissões para leitura e escrita dos conteúdos do repositório
       actions: read
-      id-token: write
+      id-token: write  # Se necessário
 
     steps:
       - name: Checkout code
