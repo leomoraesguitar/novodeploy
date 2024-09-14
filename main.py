@@ -1,7 +1,7 @@
 import flet as ft
 
 def main(page: ft.Page):
-    new_key_field = ft.TextField(label="novo Nome1", width=200)
+    new_key_field = ft.TextField(label="novo Nome2", width=200)
     result_label = ft.Text(value="", color="green")
 
 
@@ -14,13 +14,15 @@ def main(page: ft.Page):
             return page.client_storage.get(nome)
         else:
             return default
+        
+
     def submit_content(e):
         result_label.value = "Valor salvo no LocalStorage!"
         SalvarDadosLocais('valor', new_key_field.value)
         page.update()
 
-
-    # new_key_field.value = LerDadosLocais('valor')
+    SalvarDadosLocais('valor', 'meu ovo')
+    new_key_field.value = LerDadosLocais('valor', 'meu ovo')
     submit_button = ft.ElevatedButton(text="Salvar no LocalStorage", on_click=submit_content)
 
     page.add(
