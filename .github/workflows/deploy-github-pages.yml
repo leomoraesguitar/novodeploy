@@ -89,4 +89,4 @@ jobs:
         with:
           artifact_name: web-build-artifact        
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Adiciona o token aqui
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}  # Adiciona o token aqui
