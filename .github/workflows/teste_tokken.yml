@@ -1,10 +1,10 @@
-name: Deploy Workflow
+name: Build and Deploy Web
 
 on:
   workflow_dispatch:  # Permite execução manual
 
 jobs:
-  test_permissions:
+  build_and_upload:
     runs-on: ubuntu-latest
 
     steps:
