@@ -1,4 +1,4 @@
-name: Web Build + Deployment to GitHub Pages 
+name: implantar pagina
 
 on:
   # # Runs on push to any of the below branches
