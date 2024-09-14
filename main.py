@@ -9,7 +9,7 @@ def main(page: ft.Page):
         page.client_storage.set(nome, valor)
         
 
-    def LerDadosLocais( nome,  default=None):
+    def LerDadosLocais(nome,  default=None):
         # if page.client_storage.contains_key(nome):
         try:
             r = page.client_storage.get(nome)
@@ -19,11 +19,11 @@ def main(page: ft.Page):
         
 
     def submit_content(e):
-        result_label.value = f"Valor salvo no LocalStorage: {LerDadosLocais('valor', 'meu ovo')}"
+        result_label.value = f"Valor salvo no LocalStorage: {page.client_storage.get('valor')}"
         SalvarDadosLocais('valor', new_key_field.value)
         page.update()
 
-    SalvarDadosLocais('valor', 'meu ovo2')
+    SalvarDadosLocais('valor', 'meu ovo3')
     # new_key_field.value = LerDadosLocais('valor', 'meu ovo')
     submit_button = ft.ElevatedButton(text="Salvar no LocalStorage", on_click=submit_content)
 
