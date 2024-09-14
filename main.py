@@ -23,7 +23,7 @@ def main(page: ft.Page):
         SalvarDadosLocais('valor', new_key_field.value)
         page.update()
 
-    SalvarDadosLocais('valor', 'meu ovo3')
+    SalvarDadosLocais('valor', 'meu ovo4')
     # new_key_field.value = LerDadosLocais('valor', 'meu ovo')
     submit_button = ft.ElevatedButton(text="Salvar no LocalStorage", on_click=submit_content)
 
@@ -34,5 +34,6 @@ def main(page: ft.Page):
         result_label,
 
     )
+    page.update()
 if __name__ == '__main__':
     ft.app(main, view=ft.AppView.WEB_BROWSER)
