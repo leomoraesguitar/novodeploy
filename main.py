@@ -1,7 +1,7 @@
 import flet as ft
 
 def main(page: ft.Page):
-    new_key_field = ft.TextField(label="novo Nome", width=200)
+    new_key_field = ft.TextField(label="novo Nome1", width=200)
     result_label = ft.Text(value="", color="green")
 
 
@@ -20,7 +20,7 @@ def main(page: ft.Page):
         page.update()
 
 
-    new_key_field.value = LerDadosLocais('valor')
+    # new_key_field.value = LerDadosLocais('valor')
     submit_button = ft.ElevatedButton(text="Salvar no LocalStorage", on_click=submit_content)
 
     page.add(
