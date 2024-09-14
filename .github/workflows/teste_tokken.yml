@@ -1,0 +1,29 @@
+name: Test GitHub Token
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test_token:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Test GitHub Token
+        run: |
+          python -c "
+          import os
+          import requests
+
+          token = os.getenv('GITHUB_TOKEN')
+          if not token:
+              print('GITHUB_TOKEN não configurado.')
+          else:
+              response = requests.get('https://api.github.com/user', headers={'Authorization': f'token {token}'})
+              print('Status Code:', response.status_code)
+              print('Response:', response.json())
+          "
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
