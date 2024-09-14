@@ -18,7 +18,7 @@ jobs:
           import requests
           import base64
           import json
-
+          
           class API_Github:
               def __init__(self):
                   self._GITHUB_TOKEN = os.getenv('PERSONAL_ACCESS_TOKEN')
@@ -30,16 +30,20 @@ jobs:
                       'Authorization': f'token {self._GITHUB_TOKEN}',
                       'Accept': 'application/vnd.github.v3+json'
                   }
-
+          
               def get_file_content(self):
+                  print("Fetching file content...")
                   response = requests.get(self._API_URL, headers=self._headers)
+                  print(f"Status Code: {response.status_code}")
+                  print(f"Response: {response.text}")
                   if response.status_code == 200:
                       file_info = response.json()
                       file_content = base64.b64decode(file_info['content']).decode('utf-8')
                       return file_content, file_info['sha']
                   return None, None
-
+          
               def update_github_file(self, new_content, sha):
+                  print("Updating file on GitHub...")
                   message = "Atualização do arquivo JSON"
                   encoded_content = base64.b64encode(new_content.encode('utf-8')).decode('utf-8')
                   data = {
@@ -48,8 +52,10 @@ jobs:
                       'sha': sha
                   }
                   response = requests.put(self._API_URL, json=data, headers=self._headers)
+                  print(f"Status Code: {response.status_code}")
+                  print(f"Response: {response.text}")
                   return response.status_code
-
+          
           def main():
               api = API_Github()
               file_content, sha = api.get_file_content()
@@ -61,9 +67,10 @@ jobs:
                   print('Response:', 'File updated successfully' if status == 200 else 'Failed to update file')
               else:
                   print('Failed to get file content')
-
+          
           if __name__ == "__main__":
               main()
+
           "
         env:
           PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
