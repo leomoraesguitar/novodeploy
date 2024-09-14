@@ -19,12 +19,12 @@ def main(page: ft.Page):
         
 
     def submit_content(e):
-        result_label.value = "Valor salvo no LocalStorage!"
+        result_label.value = f"Valor salvo no LocalStorage: {LerDadosLocais('valor', 'meu ovo')}"
         SalvarDadosLocais('valor', new_key_field.value)
         page.update()
 
     SalvarDadosLocais('valor', 'meu ovo2')
-    new_key_field.value = LerDadosLocais('valor', 'meu ovo')
+    # new_key_field.value = LerDadosLocais('valor', 'meu ovo')
     submit_button = ft.ElevatedButton(text="Salvar no LocalStorage", on_click=submit_content)
 
     page.add(
