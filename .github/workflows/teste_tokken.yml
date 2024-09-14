@@ -17,7 +17,7 @@ jobs:
           import os
           import requests
 
-          token = os.getenv('pat')
+          token = os.getenv('PERSONAL_ACCESS_TOKEN')
           if not token:
               print('PERSONAL_ACCESS_TOKEN não configurado.')
           else:
