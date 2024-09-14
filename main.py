@@ -5,22 +5,30 @@ def main(page: ft.Page):
     result_label = ft.Text(value="", color="green")
 
 
-    def SalvarDadosLocais( nome, valor):
-        page.client_storage.set(nome, valor)
+    # def SalvarDadosLocais( nome, valor):
+    #     page.client_storage.set(nome, valor)
         
 
-    async  def LerDadosLocais(nome,  default=None):
-        # if page.client_storage.contains_key(nome):
+    # async  def LerDadosLocais(nome,  default=None):
+    #     # if page.client_storage.contains_key(nome):
+    #     try:
+    #         r = await page.client_storage.get_async(nome)
+    #         return r
+    #     except:
+    #         return default
+        
+
+    async def submit_content(e):
+        # SalvarDadosLocais('valor', new_key_field.value)
+        v = new_key_field.value
+        await page.client_storage.set_async('valor',v)
+
         try:
-            r = await page.client_storage.get_async(nome)
-            return r
+            r = await page.client_storage.get_async('valor')
+            
         except:
-            return default
-        
-
-    def submit_content(e):
-        SalvarDadosLocais('valor', new_key_field.value)
-        result_label.value = f"Valor salvo no LocalStorage: {LerDadosLocais('valor')}"
+            r = None
+        result_label.value = f"Valor salvo no LocalStorage: {r}"
         page.update()
 
     # SalvarDadosLocais('valor', 'meu ovo5')
