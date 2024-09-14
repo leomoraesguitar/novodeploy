@@ -1,4 +1,4 @@
-name: Build and Deploy Web
+name: teste
 
 on:
   workflow_dispatch:  # Permite execução manual
