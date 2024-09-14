@@ -87,5 +87,6 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4.0.5
         with:
-          artifact_name: web-build-artifact
-        
+          artifact_name: web-build-artifact        
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Adiciona o token aqui
